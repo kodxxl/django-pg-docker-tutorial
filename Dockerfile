@@ -3,7 +3,7 @@ FROM python:3.9-alpine
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /requirements.txt
-
+ 
 # Install postgres client
 RUN apk add --update --no-cache postgresql-client
 
