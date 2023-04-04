@@ -12,14 +12,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: LS
+    - name: Install HELM
+      run: apt install helm
+      
+    - name: Create config from secret
       run: |
-        if [[ $FILE -eq "333" ]]
-        then
-          echo "It is 3!!!"
-        fi
+        mkdir ~/.kube
+        echo $KFILE > ~./kube/config
+        
+    - name: Deploy Postgress HELM-chart
+      run: helm
+      
     env:
-      FILE: ${{ secrets.KUBECONFIG_FILE }}
+      KFILE: ${{ secrets.KUBECONFIG_FILE }}
     
       
     
