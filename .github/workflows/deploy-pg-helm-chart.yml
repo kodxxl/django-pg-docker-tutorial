@@ -16,7 +16,7 @@ jobs:
       with:
         release: 'postgresql'
         namespace: 'django-pg'
-        chart: 'app'
+        chart: 'helm-charts/postgresql'
         token: '${{ github.token }}'
         value-files: >-
           [
