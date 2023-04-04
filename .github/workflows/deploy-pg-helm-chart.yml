@@ -2,7 +2,8 @@ name: Deploy Postgresql HELM chart
 
 on:
   push:
-    branches: [ "pg-deploy" ]
+    branches:
+    - 'pg-deploy'
 
 jobs:
   build:
