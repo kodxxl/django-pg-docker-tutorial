@@ -13,5 +13,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: LS
-      run: cat ${{ secrets.KUBECONFIG_FILE }}
+      run: echo ${{ secrets.KUBECONFIG_FILE }}
     
