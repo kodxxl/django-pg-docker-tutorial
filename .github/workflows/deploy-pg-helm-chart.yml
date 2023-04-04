@@ -12,6 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: LS
+      run: ls -AlF
       
     - name: Deploy Postgresql
       uses: 'deliverybot/helm@v1'
