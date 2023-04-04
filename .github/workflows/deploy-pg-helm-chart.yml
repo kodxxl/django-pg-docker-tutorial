@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install HELM
-      run: sudo apt install helm
+      run: sudo snap install helm --classic
       
     - name: Create config from secret
       run: |
