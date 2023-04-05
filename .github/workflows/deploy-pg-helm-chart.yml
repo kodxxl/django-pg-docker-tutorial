@@ -19,9 +19,12 @@ jobs:
       run: |
         mkdir ~/.kube
         echo $KFILE > ~/.kube/config
+        chmod 600 ~/.kube/config
         
     - name: Deploy Postgress HELM-chart
-      run: helm list
+      run: |
+        kubectl 
+        helm list
       
     env:
       KFILE: ${{ secrets.KUBECONFIG_FILE }}
