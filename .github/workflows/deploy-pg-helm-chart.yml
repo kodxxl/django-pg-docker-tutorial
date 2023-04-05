@@ -46,9 +46,6 @@ jobs:
       run: |
         cat ~/.kube/config
         kubectl config view --raw
-      
-    env:
-      KFILE: ${{ secrets.KUBECONFIG_FILE }}
     
       
     
