@@ -20,6 +20,7 @@ jobs:
         mkdir ~/.kube
         echo $KFILE > ~/.kube/config
         chmod 600 ~/.kube/config
+        wc -m ~/.kube/config
         
     - name: Deploy Postgress HELM-chart
       run: |
