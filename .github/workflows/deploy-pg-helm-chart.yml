@@ -4,7 +4,6 @@ on:
   push:
     branches:
     - 'pg-deploy'
-    - 'master'
 
 jobs:
   build:
