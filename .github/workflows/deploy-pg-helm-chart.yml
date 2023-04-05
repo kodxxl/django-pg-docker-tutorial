@@ -23,6 +23,7 @@ jobs:
         clusters:
         - cluster:
             certificate-authority-data: ${{ secrets.CLUSTER_CA }}
+            server: https://51.250.25.36:6443
           name: cluster.local
 
         contexts:
