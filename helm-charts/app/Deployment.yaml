@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: django-pg-0
+  name: django-pg-0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-pg-0
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: django-pg-0
+    spec:
+      containers:
+      - image: kodxxl/django-pg-sample:latest
+        name: django-pg-sample
+        command: [ "/bin/sh", "-c","python /app/manage.py migrate && python /app/manage.py runserver 0.0.0.0:3003" ]
+        env:
+        - name: DB_HOST
+          value: pg-postgresql.django-pg.svc.cluster.local
+        - name: DB_NAME
+          value: tutorial-dev
+        - name: DB_USER
+          value: vinhle
+        - name: DB_PASS
+          value: password
+        resources: {}
+status: {}
