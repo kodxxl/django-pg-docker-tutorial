@@ -44,7 +44,7 @@ jobs:
         
     - name: Deploy Postgress HELM-chart
       run: |
-        helm list --kube-insecure-skip-tls-verify
+        helm list --kube-insecure-skip-tls-verify -n django-pg
     
       
     
