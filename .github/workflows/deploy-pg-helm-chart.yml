@@ -43,7 +43,7 @@ jobs:
         
     - name: Deploy Postgress HELM-chart
       run: |
-        kubectl 
+        kubectl config view --raw
         helm list
       
     env:
