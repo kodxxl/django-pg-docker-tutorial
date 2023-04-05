@@ -18,8 +18,27 @@ jobs:
     - name: Create config from secret
       run: |
         mkdir ~/.kube
-        echo $KFILE > ~/.kube/config
-        chmod 600 ~/.kube/config
+        cat << EOF > ~/.kube/config
+        apiVersion: v1
+        clusters:
+        - cluster:
+          name: cluster.local
+            certificate-authority-data: ${{ secrets.CLUSTER_CA }}
+            server: https://51.250.25.36:6443
+        contexts:
+        - context:
+          name: github-actions
+            cluster: cluster.local
+            user: github-actions
+        current-context: github-actions
+        kind: Config
+        preferences: {}
+        users:
+        - name: github-actions
+          user:
+            client-certificate-data: ${{ secrets.CLIENT_CERT_DATA }}
+            client-key-data: ${{ secrets.CLIENT_KEY_DATA }}
+        EOF
         wc -m ~/.kube/config
         
     - name: Deploy Postgress HELM-chart
