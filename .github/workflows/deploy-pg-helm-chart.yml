@@ -24,7 +24,7 @@ jobs:
         - cluster:
           name: cluster.local
             certificate-authority-data: ${{ secrets.CLUSTER_CA }}
-            server: "51.250.25.36:6443"
+            server: "51.250.25.36"
         contexts:
         - context:
           name: github-actions
