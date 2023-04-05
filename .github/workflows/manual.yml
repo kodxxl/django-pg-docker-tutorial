@@ -1,0 +1,45 @@
+name: Deploy APP HELM chart
+
+on:
+  push:
+    branches:
+    - 'app-deploy'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install HELM
+      run: sudo snap install helm --classic
+      
+    - name: Create config from secret
+      run: |
+        mkdir ~/.kube
+        cat << EOF > ~/.kube/config
+        apiVersion: v1
+        clusters:
+        - cluster:
+            certificate-authority-data: ${{ secrets.CLUSTER_CA }}
+            server: https://51.250.25.36:6443
+          name: cluster.local
+        contexts:
+        - context:
+            cluster: cluster.local
+            user: github-actions
+          name: github-actions
+        current-context: github-actions
+        kind: Config
+        preferences: {}
+        users:
+        - name: github-actions
+          user:
+            client-certificate-data: ${{ secrets.CLIENT_CERT_DATA }}
+            client-key-data: ${{ secrets.CLIENT_KEY_DATA }}
+        EOF
+        chmod 600 ~/.kube/config
+        
+    - name: Deploy Postgress HELM-chart
+      run: |
+        helm list --kube-insecure-skip-tls-verify -n django-pg
