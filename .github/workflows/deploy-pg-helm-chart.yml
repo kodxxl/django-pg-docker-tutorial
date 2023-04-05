@@ -40,12 +40,11 @@ jobs:
             client-key-data: ${{ secrets.CLIENT_KEY_DATA }}
         EOF
         chmod 600 ~/.kube/config
-        wc -m ~/.kube/config
         
     - name: Deploy Postgress HELM-chart
       run: |
         cat ~/.kube/config
-        kubectl config view --raw
+        helm list
     
       
     
