@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pg-pv-volume
+  labels:
+    app.kubernetes.io/component: primary
+    app.kubernetes.io/instance: pg
+    app.kubernetes.io/name: postgresql
+spec:
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/data"
