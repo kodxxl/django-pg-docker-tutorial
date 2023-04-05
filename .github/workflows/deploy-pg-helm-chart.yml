@@ -3,6 +3,7 @@ name: Deploy Postgresql HELM chart
 on:
   push:
     branches:
+    - 'master'
     - 'pg-deploy'
 
 jobs:
