@@ -22,14 +22,14 @@ jobs:
         apiVersion: v1
         clusters:
         - cluster:
-          name: cluster.local
             certificate-authority-data: ${{ secrets.CLUSTER_CA }}
+          name: cluster.local
 
         contexts:
         - context:
-          name: github-actions
             cluster: cluster.local
             user: github-actions
+          name: github-actions
         current-context: github-actions
         kind: Config
         preferences: {}
