@@ -43,4 +43,4 @@ jobs:
     - name: Deploy Postgress HELM-chart
       run: |
         kubectl get pods -n django-pg --insecure-skip-tls-verify
-        kubectl apply -f helm-charts/app/
+        kubectl apply -f helm-charts/app/ --insecure-skip-tls-verify
